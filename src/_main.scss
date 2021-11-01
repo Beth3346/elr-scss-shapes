@@ -1,0 +1,66 @@
+// provide width and height with no units to calculate ratio
+// for a square provide equal width & height
+@mixin elr-ratiobox($config: ()) {
+  $config: extend(
+    (
+      width: 300,
+      height: 300,
+    ),
+    $config
+  );
+
+  $width: map-get($config, width);
+  $height: map-get($config, height);
+
+  $img-ratio: get-aspect-ratio($width, $height);
+
+  display: inline-block;
+  position: relative;
+
+  &::after {
+    content: "";
+    padding-top: $img-ratio * 100%;
+    display: block;
+  }
+
+  .elr-ratiobox-inner {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .elr-ratiobox-centeredtext {
+    @include elr-centerer(
+      $config: (
+        vertical: true,
+        horizontal: false,
+      )
+    );
+    text-align: center;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .elr-ratiobox-img-wrapper {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .elr-ratiobox-img {
+    transform: translate(-50%, -50%);
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: auto;
+    max-width: none;
+    height: 100%;
+  }
+
+  .elr-box-link {
+    display: block;
+    height: 100%;
+  }
+}
