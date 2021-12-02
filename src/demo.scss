@@ -1,46 +1,141 @@
-@import "./src/main";
+@import "elr-scss-config/src/main";
 @import "elr-scss-reset/src/main";
+@import "elr-scss-base/src/main";
+@import "./src/main";
 
 @include elr-reset;
+@include elr-base;
 
 * {
   font-family: Roboto;
 }
 
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-  width: 100%;
+.wrapper {
+  max-width: $content-width;
+  margin: auto;
+  padding: ($base-fontsize * 1.5);
 }
 
-.wrapper {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+.main-heading,
+.subheading {
+  border-bottom: $border;
+  padding-bottom: $base-fontsize * 0.5;
+  margin-bottom: $base-fontsize;
+  width: 100%;
 }
 
 .main-heading {
-  font-size: 36px;
-  font-weight: 900;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-  width: 100%;
+  font-size: $base-fontsize * 2;
+  font-weight: 700;
 }
 
 .subheading {
-  font-size: 18px;
-  color: #111;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-  width: 100%;
+  font-size: $base-fontsize * 1.5;
+  font-weight: 900;
+  color: $primary-color;
 }
 
 .demo-content {
   position: relative;
-  padding: 20px 0;
+  padding: ($base-fontsize * 1.5) 0;
+  // display: flex;
+}
+
+.flex {
+  display: flex;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.triangle {
+  margin: 32px;
+}
+
+.triangle-top {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+    )
+  );
+}
+
+.triangle-right {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "right",
+    )
+  );
+}
+
+.triangle-bottom {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "bottom",
+    )
+  );
+}
+
+.triangle-left {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "left",
+    )
+  );
+}
+
+.triangle-top-right {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "top-right",
+    )
+  );
+}
+
+.triangle-bottom-right {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "bottom-right",
+    )
+  );
+}
+
+.triangle-top-left {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "top-left",
+    )
+  );
+}
+
+.triangle-bottom-left {
+  @include elr-triangle(
+    $config: (
+      base: 100px,
+      direction: "bottom-left",
+    )
+  );
+}
+
+.ratiobox {
+  @include elr-ratiobox;
+  background-color: $primary-color;
+}
+
+.ratiobox-300-500 {
+  @include elr-ratiobox(
+    $config: (
+      width: 500,
+      height: 300,
+    )
+  );
+  background-color: $primary-color;
 }

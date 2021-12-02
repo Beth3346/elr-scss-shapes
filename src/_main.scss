@@ -7,7 +7,7 @@
       direction: "top",
       base: 50px,
       height: "half",
-      color: $light-gray,
+      color: $primary-color,
     ),
     $config
   );
@@ -28,7 +28,7 @@
       "left"
   ) {
     @if ($height == "half") {
-      $height: math.div($base, 2);
+      $height: $base * 0.5;
     } @else if ($height == auto) {
       $height: $base;
     }
@@ -45,11 +45,11 @@
     )
   {
     @if ($height == "half" or $height == auto) {
-      $height: math.div($base, 2);
+      $height: $base * 0.5;
     }
   }
   // width is divided by 2 because it's used twice !
-  $base: math.div($base, 2);
+  $base: $base * 0.5;
   width: 0;
   height: 0;
 
@@ -109,45 +109,39 @@
 
   $width: map-get($config, width);
   $height: map-get($config, height);
+  $img-ratio: 100%;
 
-  $img-ratio: get-aspect-ratio($width, $height);
+  @if ($width == $height) {
+    $img-ratio: 100%;
+  } @else {
+    $img-ratio: get-aspect-ratio($width, $height) * 100%;
+  }
 
   display: inline-block;
   position: relative;
+  aspect-ratio: #{$width} / #{$height};
+  min-width: #{$width}px;
 
-  &::after {
-    content: "";
-    padding-top: $img-ratio * 100%;
-    display: block;
-  }
-
-  .elr-ratiobox-inner {
+  .ratiobox-inner {
     height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .elr-ratiobox-centeredtext {
-    @include elr-centerer(
-      $config: (
-        vertical: true,
-        horizontal: false,
-      )
-    );
+  .ratiobox-centeredtext {
     text-align: center;
     padding: 0 20px;
     width: 100%;
   }
 
-  .elr-ratiobox-img-wrapper {
+  .ratiobox-img-wrapper {
     height: 100%;
     overflow: hidden;
   }
 
-  .elr-ratiobox-img {
+  .ratiobox-img {
     transform: translate(-50%, -50%);
     position: relative;
     left: 50%;
@@ -157,7 +151,7 @@
     height: 100%;
   }
 
-  .elr-box-link {
+  .box-link {
     display: block;
     height: 100%;
   }
