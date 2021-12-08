@@ -1,5 +1,7 @@
-# elr-scss-shapes
+# Shapes
 
+[![npm version](http://img.shields.io/npm/v/elr-scss-shapes.svg)](https://www.npmjs.org/package/elr-scss-shapes)
+[![Build Status](https://github.com/elr-scss-shapes/workflows/CI/badge.svg)](https://github.com/elr-scss-shapes/actions?workflow=CI)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/dm/elr-scss-shapes.svg?style=flat)](https://npmjs.com/package/elr-scss-shapes)
 
@@ -118,5 +120,7 @@ yarn add elr-scss-shapes
   );
 }
 ```
+
+## License
 
 SEE LICENSE IN LICENSE.md
